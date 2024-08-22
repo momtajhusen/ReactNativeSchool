@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "cat": "Dashboard",
+        "icon": " dashboard_sharp_icon",
+        "menus": [
+          {
+            "id": 2,
+            "label": "‣ Modern",
+            "link": "dashboard"
+          },
+          {
+            "id": 3,
+            "label": "‣ Analytics",
+            "icon": "auto_graph",
+            "link": "analytics"
+          },
+          {
+            "id": 4,
+            "label": "‣ Ecommerce",
+            "icon": "shopping_bag",
+            "link": "ecommerce"
+          }
+        ]
+      }
+]
