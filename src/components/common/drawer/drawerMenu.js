@@ -17,21 +17,40 @@ const MENU_ITEMS = [
   },
   {
     id: 2,
-    title: 'Students Management',
-    icon: 'group',
+    title: 'Finance Analysis',
+    icon: 'bar-chart',
     content: [
-      { title: 'Student Registration', route: 'StudentRegister' },
-      // { title: 'Redistration List', route: 'SubMenu2' },
-      { title: 'All Students', route: 'AllStudents' },
-      // { title: 'All Parents', route: 'SubMenu3' },
-      // { title: 'Student Promotion', route: 'SubMenu3' },
-      // { title: 'Passout Students', route: 'SubMenu3' },
-      // { title: 'Kick Out Students', route: 'SubMenu3' },
-      // { title: 'Generate Id Card', route: 'SubMenu3' },
+      { title: 'Fee Collections', route: 'FeeCollection' },
+      { title: 'Expenses', route: 'Expenses' },
     ],
   },
   {
     id: 3,
+    title: 'Account Management',
+    icon: 'group',
+    content: [
+      { title: 'Fee Payment', route: 'FeePayment' },
+      { title: 'Check Dues List', route: 'CheckDuesList' },
+      { title: 'Add Expenses', route: 'AddExpenses' },
+    ],
+  },
+  {
+    id: 4,
+    title: 'Students Management',
+    icon: 'group',
+    content: [
+      { title: 'Student Registration', route: 'StudentRegister' },
+      { title: 'Redistration List', route: 'RedistrationList' },
+      { title: 'All Students', route: 'AllStudents' },
+      // { title: 'All Parents', route: 'SubMenu3' },
+      { title: 'Student Promotion', route: 'StudentPromotion' },
+      { title: 'Passout Students', route: 'PassoutStudents' },
+      { title: 'Kick Out Students', route: 'KickOutStudents' },
+      // { title: 'Generate Id Card', route: 'SubMenu3' },
+    ],
+  },
+  {
+    id: 5,
     title: 'Employee Management',
     icon: 'man',
     content: [
@@ -40,7 +59,7 @@ const MENU_ITEMS = [
     ],
   },
   {
-    id: 4,
+    id: 6,
     title: 'Exam Management',
     icon: 'edit-note',
     content: [

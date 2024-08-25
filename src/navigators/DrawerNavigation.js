@@ -1,7 +1,8 @@
 // import libraries
 import {useEffect, useState} from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+
 import { View, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -15,6 +16,12 @@ import AddNewEmployee from '../screens/Employee/AddNewEmployee';
 import AllEmployee from '../screens/Employee/AllEmployee';
 import MarkEntry from '../screens/Exam Management/MarkEntry';
 import Tabulation from '../screens/Exam Management/Tabulation';
+import Expenses from '../screens/Report/Expenses';
+import FeeCollection from '../screens/Report/FeeCollections';
+import FeePayment from '../screens/AccountManagement/FeePayment';
+import AddExpenses  from '../screens/AccountManagement/AddExpenses';
+import CheckDuesList  from '../screens/AccountManagement/CheckDuesList';
+
 
 // create drawer navigator
 const Drawer = createDrawerNavigator();
@@ -61,6 +68,14 @@ useEffect(() => {
         })}
       >
         <Drawer.Screen name="Dashboard" component={Dashboard} />
+        <Drawer.Screen name="Expenses" component={Expenses} />
+        <Drawer.Screen name="FeeCollection" component={FeeCollection} />
+
+        <Drawer.Screen name="FeePayment" component={FeePayment} />
+        <Drawer.Screen name="CheckDuesList" component={CheckDuesList} />
+        <Drawer.Screen name="AddExpenses" component={AddExpenses} />
+
+
         <Drawer.Screen name="StudentRegister" component={StudentRegister} />
         <Drawer.Screen name="AllStudents" component={AllStudents} />
         <Drawer.Screen name="AddNewEmployee" component={AddNewEmployee} />

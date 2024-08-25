@@ -12,6 +12,7 @@ import Verification from '../screens/Authentication/VerifucationCode';
 import SchoolSelect from '../screens/Authentication/SchoolSelect';
 import ExamMarkUpdate from '../components/ExamManagement/ExamMarkUpdate';
 import ViewTabulation from '../components/ExamManagement/ViewTabulation';
+import Notifications from '../screens/Settings/notifications';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -29,10 +30,10 @@ const StackNavigation = () => {
                 <Stack.Screen name="Verification" component={Verification} options={{headerShown: false}} />
                 <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} options={{headerShown: false}} />
                 <Stack.Screen name="Setting" component={Setting} options={{headerShown: false}} />
+                <Stack.Screen name="Notifications" component={Notifications} options={{headerShown: false}} />
                 <Stack.Screen name="SchoolSelect" component={SchoolSelect} options={{headerShown: false}} />
                 <Stack.Screen name="ExamMarkUpdate" component={ExamMarkUpdate} options={{headerShown: false}} />
                 <Stack.Screen name="ViewTabulation" component={ViewTabulation} options={{headerShown: false}} />
-
             </Stack.Navigator>
         </NavigationContainer>
         </View>

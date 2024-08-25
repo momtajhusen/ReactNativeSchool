@@ -20,16 +20,22 @@ const Header = ({ title, rightIcon }) => {
     >
       <View className="flex-row">
           <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-            <MaterialIcons name="menu" size={30} style={{ color: theme.text }} />
+            <MaterialIcons name="apps" size={30} style={{ color: theme.text }} />
           </TouchableOpacity>
           <Text className="font-bold text-base ml-2" style={{ color: theme.text }}>
             {title}
           </Text>
       </View>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
-        <MaterialIcons name={rightIcon} size={25} style={{ color: theme.text }} />
-      </TouchableOpacity>
+      <View className='flex-row space-x-4'>
+          <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
+            <MaterialIcons name={rightIcon} size={25} style={{ color: theme.text }} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
+            <MaterialIcons name='notifications' size={25} style={{ color: theme.text }} />
+          </TouchableOpacity>
+      </View>
+
     </View>
   );
 };

@@ -14,7 +14,7 @@ import * as Animatable from 'react-native-animatable';
 // create a component
 const SplashScreen = () => {
 
-    const { state } = useContext(AppContext);
+    const { state, dispatch } = useContext(AppContext);
     const themeColor = state.theme.themeMode === 'dark' ? darkTheme : lightTheme;
 
     const navigation = useNavigation();
@@ -22,7 +22,11 @@ const SplashScreen = () => {
     useEffect(() => {
         const checkEmailAndNavigate = async () => {
           const email = await AsyncStorage.getItem('email');
-          if (email !== null) {
+          const schoolDomain = await AsyncStorage.getItem('school_domain');
+
+          dispatch({ type: 'SET_DOMAIN_NAME', payload: schoolDomain });
+
+          if (email !== null && schoolDomain !== null) {
             navigation.replace('DrawerNavigator');
           } else {
             navigation.replace('SchoolSelect');

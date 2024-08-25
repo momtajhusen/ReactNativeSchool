@@ -22,7 +22,7 @@ const SchoolSelect = () => {
     { label: 'Gurukul', address: 'arang', value: 'https://gurukul.scriptqube.com' },
     { label: 'Sunrise', address: 'arang', value: 'https://sunrise.scriptqube.com' },
     { label: 'Demo School', address: 'arang', value: 'https://demo.scriptqube.com' },
-    // { label: 'LocalHost', address: 'arang', value: 'http://127.0.0.1:8000' },
+    { label: 'LocalHost', address: 'arang', value: 'http://127.0.0.1:8000' },
   ];
 
   const next = async () => {

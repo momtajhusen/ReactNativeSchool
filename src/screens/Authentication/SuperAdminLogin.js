@@ -33,8 +33,10 @@ useEffect(() => {
     const fetchSchoolDomain = async () => {
       try {
         const domain = await AsyncStorage.getItem('school_domain');
+        console.log(domain);
         if (domain !== null) {
           setSchoolDomain(domain);
+          console.log(domain+'/storage/upload_assets/school/school_logo.png');
         } else {
           Alert.alert('Error', 'School domain not found');
         }
@@ -43,6 +45,7 @@ useEffect(() => {
         console.error(error);
       }
     };
+
 
     fetchSchoolDomain();
   }, []); // Add empty dependency array to run only once
@@ -98,6 +101,7 @@ useEffect(() => {
           if (data.status === 'user match') {
 
                 if (data.email_verification === 'off') {
+                  await AsyncStorage.setItem('email', email);
                   navigation.replace('DrawerNavigator');
                 } 
                 else if(data.email_verification === 'on'){

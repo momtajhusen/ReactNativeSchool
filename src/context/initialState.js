@@ -8,7 +8,7 @@ const initialState = {
     classSubjects: [],
   },
   school: {
-    schoolDomainName: 'default',
+    schoolDomainName: null,
   }
 };
 
