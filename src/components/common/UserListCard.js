@@ -11,15 +11,15 @@ const UserListCard = ({ title, subtitle, img }) => {
     const themeColor = state.theme.themeMode === 'dark' ? darkTheme : lightTheme;
 
     return (
-        <View>
-            <View className='p-2 my-1 flex-row' style={{backgroundColor:themeColor.secondary, borderBottomWidth:1, borderBottomColor:themeColor.border}}>
-               <Image className='p-1 border' style={{width:50,}} source={{ uri: img}} />
+        
+            <View className='p-3 my-1 flex-row' style={{borderRadius:8, backgroundColor:themeColor.secondary, borderBottomWidth:1, borderBottomColor:themeColor.border}}>
+               <Image className='p-1 border' style={{borderRadius:3, width:50,}} source={{ uri: img}} />
                <View className='mx-3'>
                   <Text style={{color:themeColor.text, fontWeight:'bold', fontSize:16,}}>{title}</Text>
                   <Text style={{color:themeColor.tertiary, fontWeight:'bold'}}>{subtitle}</Text>
                </View>
             </View>
-        </View>
+        
     );
 };
 

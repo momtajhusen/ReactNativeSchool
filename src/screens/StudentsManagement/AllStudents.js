@@ -7,6 +7,7 @@ import HeaderTitle from '../../components/common/headerTitle';
 import UserListCard from '../../components/common/UserListCard';
 import { createApiClient } from '../../apiClient';
 import { useIsFocused } from '@react-navigation/native'; 
+import UserListCardLoader from '../../components/common/SkeletonLoader/UserListCardLoader';
 
 // Create a component
 const AllStudents = () => {
@@ -29,31 +30,30 @@ const AllStudents = () => {
   const [loadingMore, setLoadingMore] = useState(false);
 
   // Function to fetch students data
-const fetchStudents = async (page = 1) => {
-  try {
-    const apiClient = await createApiClient();
-    const response = await apiClient.get(`/get-all-student?page=${page}`);
-    
-    // Check if response is defined and has the expected structure
-    const newStudents = response?.data?.data?.data || [];
+  const fetchStudents = async (page = 1) => {
+    try {
+      const apiClient = await createApiClient();
+      const response = await apiClient.get(`/get-all-student?page=${page}`);
+      
+      // Check if response is defined and has the expected structure
+      const newStudents = response?.data?.data?.data || [];
 
-    if (newStudents.length > 0) {
-      setStudents((prevStudents) => [...prevStudents, ...newStudents]);
-      setHasMore(true); // More data is available
-    } else {
-      setHasMore(false); // No more data to load
+      if (newStudents.length > 0) {
+        setStudents((prevStudents) => [...prevStudents, ...newStudents]);
+        setHasMore(true); // More data is available
+      } else {
+        setHasMore(false); // No more data to load
+      }
+
+      setLoading(false);
+      setLoadingMore(false);
+    } catch (err) {
+      console.error('Error fetching students:', err); // Debug: Log the error
+      setError('Failed to fetch students');
+      setLoading(false);
+      setLoadingMore(false);
     }
-
-    setLoading(false);
-    setLoadingMore(false);
-  } catch (err) {
-    console.error('Error fetching students:', err); // Debug: Log the error
-    setError('Failed to fetch students');
-    setLoading(false);
-    setLoadingMore(false);
-  }
-};
-
+  };
 
   // Initial fetch on component mount
   useEffect(() => {
@@ -74,18 +74,19 @@ const fetchStudents = async (page = 1) => {
     <View className="flex-1 px-5 pb-5" style={[{ backgroundColor: themeColor.primary }]}>
       <HeaderTitle title="STUDENTS" />
       <FlatList
-        data={students}
+        data={loading ? Array(20).fill({}) : [...students, ...(loadingMore ? Array(20).fill({}) : [])]} // Show loaders while loading more
         renderItem={({ item, index }) => (
-          <View>
+          loading || loadingMore && index >= students.length ? (
+            <UserListCardLoader key={index} />
+          ) : (
             <UserListCard
-              key={item.id}
               title={`${item.first_name} ${item.middle_name} ${item.last_name}`}
               subtitle={`${item.class} - ${index + 1}`} // Use class and section as subtitle
               img={`${schoolDomain}/storage/${item.student_image}`} // Adjust the URL if necessary
             />
-          </View>
-
+          )
         )}
+        keyExtractor={(item, index) => index.toString()}
         onEndReached={handleLoadMore} // Trigger when reaching the end
         onEndReachedThreshold={0.9} // Trigger when 90% of the list is scrolled
         ListFooterComponent={
@@ -102,6 +103,7 @@ const fetchStudents = async (page = 1) => {
             </View>
           )
         }
+        indicatorStyle="white"
       />
     </View>
   );
